@@ -3,7 +3,7 @@
     session_start();
 
     if($_SESSION['is_auth']){
-        header('location: /feed');
+        header('location: /feed/feed.php');
     }
 
     $link = new PDO('mysql:host=localhost;dbname=gramtele','root','');
@@ -11,17 +11,20 @@
     if($_POST['auth']){
         if($_POST['login']){
             if($_POST['password']){
-                $sql='SELECT id FROM users WHERE login=? and password=?';
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $sql='SELECT id,password FROM users WHERE login=?';
                 $res = $link->prepare($sql);
-                $res->execute([$_POST['login'], $_POST['password']]);
+                $res->execute([$_POST['login']]);
                 $array = $res->fetch(PDO::FETCH_ASSOC);
-                if ($array['id']){
-                    echo 1;
+
+                if(password_verify($_POST['password'], $array['password'])){
                     $_SESSION['is_auth'] = true;
                     $_SESSION['id_user'] = $array['id'];
+                    header('location: /feed/feed.php');
+                    exit;
                 }
-                else {
-                    $_SESSION['msg'] = 'Некашерный логин или пароль';
+                else{
+                    $_SESSION['msg'] = 'Неверный логин или пароль';
                     $_SESSION['msg_status'] = 'danger';
                 }
             }
@@ -32,8 +35,10 @@
         }
         else{
             $_SESSION['msg'] = 'Введите логин';
+            $_SESSION['msg_status'] = 'danger';
         }
     }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -53,7 +58,7 @@
         <div class="login-form">
             <div class="registration-header">Вход</div>
             <div class="registration-zone">
-                <span class="message <?= ($_SESSION['msg_status']) ?  : '' ?>"><?= $_SESSION['msg'] ?></span>
+                <span class="message" <?= ($_SESSION['msg_status']) ?  : '' ?>"><?= $_SESSION['msg'] ?></span>
                 <?
                 $_SESSION['msg'] = '';
                 $_SESSION['msg_status'] = '';
