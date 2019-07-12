@@ -3,7 +3,7 @@ header('Content-type:text/html;charset=utf-8');
 session_start();
 
 if($_SESSION['is_auth']){
-    header('location: /feed/feed.php');
+    header('location: /feed/index.php');
 }
 
 $link = new PDO('mysql:host=localhost;dbname=gramtele','root','');
@@ -23,7 +23,7 @@ if($_POST['registration']){
                     $_SESSION['is_auth'] = true;
                     $_SESSION['id_user'] = $id;
 
-                    header('location: /feed/feed.php');
+                    header('location: /feed/index.php');
                     exit;
                 }
             }
@@ -77,7 +77,7 @@ if($_POST['registration']){
                 </form>
             </div>
             <div class="arleady-have-account">
-                <a href="logining/login.php">
+                <a href="logining/index.php">
                     Уже есть аккаунт? Войти...
                 </a>
             </div>
