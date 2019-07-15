@@ -3,7 +3,7 @@
     session_start();
 
     if($_SESSION['is_auth']){
-        header('location: /feed/feed.php');
+        header('location: /feed/index.php');
     }
 
     $link = new PDO('mysql:host=localhost;dbname=gramtele','root','');
@@ -20,7 +20,7 @@
                 if(password_verify($_POST['password'], $array['password'])){
                     $_SESSION['is_auth'] = true;
                     $_SESSION['id_user'] = $array['id'];
-                    header('location: /feed/feed.php');
+                    header('location: /feed/index.php');
                     exit;
                 }
                 else{

@@ -7,6 +7,7 @@ $sql='SELECT login FROM users WHERE id=?';
 $res = $link->prepare($sql);
 $res->execute([$_SESSION['id_user']]);
 $row = $res->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,6 +19,7 @@ $row = $res->fetch(PDO::FETCH_ASSOC);
     <title>Новости</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles2.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
 </head>
 <body>
 <div class="feed-page">
@@ -28,15 +30,15 @@ $row = $res->fetch(PDO::FETCH_ASSOC);
         </div>
         <div class="menu-profile">
             <div class="menu-prof-name">
-            <?=$row['login']?>
+                <a href="../profile.php"><?=$row['login']?></a>
                 <a href="../exit.php">Выйти</a>
             </div>
         </div>
     </div>
     <div class="left-menu">
         <div class="menu-items">
-            <div class="menu-item"><a href="feed.php">Новости</a></div>
-            <div class="menu-item"><a href="#">Диалоги</a></div>
+            <div class="menu-item"><a href="index.php">Новости</a></div>
+            <div class="menu-item"><a href="../messages/index.php">Диалоги</a></div>
             <div class="menu-item"><a href="#">Скоро</a></div>
             <div class="menu-item"><a href="#">Скоро</a></div>
             <div class="menu-item"><a href="#">Скоро</a></div>

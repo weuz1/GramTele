@@ -1,0 +1,1 @@
+list_chats.scrollTop = 9999;

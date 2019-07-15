@@ -1,0 +1,121 @@
+.header {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    color: #e3e3e3;
+    background: #383838;
+    align-items: center;
+}
+* {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    font-family: Ubuntu;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    background: #3d3d3d;
+}
+.logo {
+    font-size: 24px;
+
+}
+.container {
+    width: 1200px;
+    margin: auto;
+}
+.menu-profile {
+    background: #303030;
+    width: 250px;
+    height: 100%;
+}
+.menu-items {
+    background: #3b3b3b;
+    height: calc(100vh - 50px);
+    width: 150px;
+}
+.menu-item a {
+    text-decoration: none;
+    color: #e3e3e3;
+    text-align: center;
+}
+.left-menu {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.menu-item {
+    width: 200px;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+}
+.menu-prof-name {
+    display: flex;
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+}
+.menu-prof-name a {
+    text-decoration: none;
+    color: #e3e3e3;
+    text-align: center;
+    padding-left: 30px;
+}
+.chats {
+    flex-grow: 1;
+    display: flex;
+    background: #3b3b3b;
+    flex-direction: column;
+    max-height: calc(100vh - 50px);
+}
+.panel  {
+    display: flex;
+}
+.chats-header {
+    background: #3b3b3b;
+    padding-right: 50px;
+    padding-left: 50px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    color: #e3e3e3;
+    font-size: 18px;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.add-chat a {
+    text-decoration: none;
+    color: #e3e3e3;
+    text-align: center;
+}
+.add-chat {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding-right: 50px;
+}
+.chat-chats {
+    display: flex;
+    height: 50px;
+}
+.chat {
+    width: 100%;
+    height: 50px;
+}
+.list-chats {
+    flex-grow: 1;
+    background: #3d3d3d;
+    overflow: auto;
+}
+input {
+    background: #474747;
+    border: 1px solid;
+    border-color: #3d3d3d;
+    color: #e3e3e3;
+    height: 25px;
+    border-radius: 3px;
+}

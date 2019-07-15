@@ -1,0 +1,41 @@
+body {
+    background: #3d3d3d;
+}
+* {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+.header {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    color: #e3e3e3;
+    background: #383838;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+
+}
+.container {
+    width: 1200px;
+    margin: auto;
+}
+.menu-profile {
+    background: #303030;
+    width: 250px;
+    height: 100%;
+}
+.menu-prof-name {
+    display: flex;
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+}
+.menu-prof-name a {
+    text-decoration: none;
+    color: #e3e3e3;
+    text-align: center;
+    padding-left: 30px;
+}

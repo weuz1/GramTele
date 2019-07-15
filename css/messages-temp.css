@@ -1,0 +1,31 @@
+* {
+    padding: 0px 0px;
+    margin: 0px 0px;
+    font-family: 'Ubuntu', sans-serif;
+}
+body {
+    background: #3b3b3b;
+}
+.message {
+    padding: 20px 10px;
+    width: 500px;
+    display: flex;
+    color: #ffffff;
+}
+.speech-bubble {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.message-avatar {
+    padding-right: 20px;
+    align-self: center;
+}
+.message-header a {
+    text-decoration: none;
+    color: #c9c9c9;
+}
+.message.unread {
+    background: #363636;
+    border-radius: 10px;
+}

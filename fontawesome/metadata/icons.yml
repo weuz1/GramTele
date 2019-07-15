@@ -2621,7 +2621,7 @@ camera:
   label: camera
   search:
     terms:
-      - image
+      - images
       - lens
       - photo
       - picture
@@ -2639,7 +2639,7 @@ camera-retro:
   label: Retro Camera
   search:
     terms:
-      - image
+      - images
       - lens
       - photo
       - picture
@@ -6860,7 +6860,7 @@ file-image:
   search:
     terms:
       - document
-      - image
+      - images
       - jpg
       - photo
       - png
@@ -9883,7 +9883,7 @@ icons:
       - bolt
       - emoji
       - heart
-      - image
+      - images
       - music
       - photo
       - symbols
@@ -13353,7 +13353,7 @@ photo-video:
     terms:
       - av
       - film
-      - image
+      - images
       - library
       - media
   styles:
@@ -13786,7 +13786,7 @@ portrait:
   search:
     terms:
       - id
-      - image
+      - images
       - photo
       - picture
       - selfie
@@ -15006,7 +15006,7 @@ sd-card:
   label: Sd Card
   search:
     terms:
-      - image
+      - images
       - memory
       - photo
       - save
