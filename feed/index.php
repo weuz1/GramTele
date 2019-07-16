@@ -6,7 +6,9 @@ $link = new PDO('mysql:host=localhost;dbname=gramtele','root','');
 $sql='SELECT login FROM users WHERE id=?';
 $res = $link->prepare($sql);
 $res->execute([$_SESSION['id_user']]);
-$row = $res->fetch(PDO::FETCH_ASSOC);
+$user_info = $res->fetch(PDO::FETCH_ASSOC);
+
+
 
 ?>
 <!doctype html>
@@ -30,18 +32,42 @@ $row = $res->fetch(PDO::FETCH_ASSOC);
         </div>
         <div class="menu-profile">
             <div class="menu-prof-name">
-                <a href="../profile.php"><?=$row['login']?></a>
+                <a href="../profile.php"><?=$user_info['login']?></a>
                 <a href="../exit.php">Выйти</a>
             </div>
         </div>
     </div>
-    <div class="left-menu">
-        <div class="menu-items">
-            <div class="menu-item"><a href="index.php">Новости</a></div>
-            <div class="menu-item"><a href="../messages/index.php">Диалоги</a></div>
-            <div class="menu-item"><a href="#">Скоро</a></div>
-            <div class="menu-item"><a href="#">Скоро</a></div>
-            <div class="menu-item"><a href="#">Скоро</a></div>
+    <div class="menu-class">
+        <div class="left-menu">
+            <div class="menu-items">
+                <div class="menu-item"><a href="index.php">Новости</a></div>
+                <div class="menu-item"><a href="../messages/index.php">Диалоги</a></div>
+                <div class="menu-item"><a href="#">Скоро</a></div>
+                <div class="menu-item"><a href="#">Скоро</a></div>
+                <div class="menu-item"><a href="#">Скоро</a></div>
+            </div>
+        </div>
+        <div class="feed">
+
+            <div class="container">
+            <?
+            $sql='SELECT header, text FROM news';
+            $res = $link->prepare($sql);
+            $res->execute([$_SESSION['id_user']]);
+            $news = $res->fetch(PDO::FETCH_ASSOC);
+            $res = $link->prepare($sql);
+            $res->execute();
+            while($array = $res->fetch(PDO::FETCH_ASSOC)){
+            ?>
+
+                <div class="one-news">
+                    <div class="news-header"><?= $array['header']?></div>
+                    <div class="news-text"><?= $array['text']?></div>
+                </div>
+                <?
+                }
+                ?>
+            </div>
         </div>
     </div>
 </div>

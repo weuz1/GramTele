@@ -29,3 +29,11 @@ body {
     background: #363636;
     border-radius: 10px;
 }
+input {
+    background: #474747;
+    border: 1px solid;
+    border-color: #3d3d3d;
+    color: #e3e3e3;
+    height: 25px;
+    border-radius: 10px;
+}
