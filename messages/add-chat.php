@@ -1,12 +1,18 @@
 <?
 session_start();
 $link = new PDO('mysql:host=localhost;dbname=gramtele','root','');
+if($_POST['chat-name']){
+    $sql = 'INSERT INTO chats(name) VALUES (?)';
+    $res = $link->prepare($sql);
+    $res->execute([$_POST['chat-name']]);
 
-if($_POST['input-message']){
-$sql = 'INSERT INTO chats (id, name) VALUES (?, ?)';
-$res = $link->prepare($sql);
-$res->execute([$_POST['id_chat']] , [$_POST['chat-name']] );
-header('location: /messages/index.php');
+    $id_chat = $link->quote($link->lastInsertId());
+    $sql = 'INSERT INTO chats_users(id_chat, id_user) VALUES ';
+    $values = substr(str_repeat("($id_chat, ?),",count($_POST['users'])), 0, -1);
+    $sql.=$values;
+    $res = $link->prepare($sql);
+    $res->execute($_POST['users']);
+    header('location: /messages/index.php');
 }
 ?>
 <!doctype html>
@@ -29,6 +35,18 @@ header('location: /messages/index.php');
             <div class="chat-header">
                 <form action="" method="post">
                     <input type="text" placeholder="Название" autocomplete="off" name="chat-name">
+                    <?
+                    $sql='SELECT * FROM users';
+                    $res = $link->prepare($sql);
+                    $res->execute();
+                    while($array = $res->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                        <input type="checkbox" name="users[]" value="<?= $array['id'] ?>"> <?= $array['login']?><br>
+                        <?
+                    }
+                    ?>
+
+
                     <input type="submit" value="Создать">
                 </form>
             </div>

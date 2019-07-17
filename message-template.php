@@ -26,6 +26,12 @@ $_SESSION['msg_status'] = 'danger';
 <body>
 
 <?
+
+$sql = "SELECT * FROM messages WHERE id_chat=?";
+$res= $link->prepare($sql);
+$row = $link->execute([$_GET['id_chat']]);
+var_dump($row);
+
 $sql='SELECT m.text text_message, u.login user_login
                 FROM messages m
                 JOIN users u ON u.id = m.id_user
