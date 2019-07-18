@@ -12,7 +12,7 @@
         if($_POST['login']){
             if($_POST['password']){
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $sql='SELECT id,password FROM users WHERE login=?';
+                $sql='SELECT id,password,status FROM users WHERE login=?';
                 $res = $link->prepare($sql);
                 $res->execute([$_POST['login']]);
                 $array = $res->fetch(PDO::FETCH_ASSOC);
@@ -20,6 +20,7 @@
                 if(password_verify($_POST['password'], $array['password'])){
                     $_SESSION['is_auth'] = true;
                     $_SESSION['id_user'] = $array['id'];
+                    $_SESSION['status'] = $array['status'];
                     header('location: /feed/index.php');
                     exit;
                 }

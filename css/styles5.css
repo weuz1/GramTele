@@ -40,5 +40,18 @@ form {
     color: #ffffff;
     align-items: center;
 }
+.list-user {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    align-items: center;
+}
+.user-list-user {
+    margin-bottom: 10px;
+    display: flex;
+}
+.user-delete {
+    margin-left: 30px;
+}
 
 

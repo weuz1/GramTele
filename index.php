@@ -22,6 +22,7 @@ if($_POST['registration']){
 
                     $_SESSION['is_auth'] = true;
                     $_SESSION['id_user'] = $id;
+                    $_SESSION['status'] = 0;
 
                     header('location: /feed/index.php');
                     exit;

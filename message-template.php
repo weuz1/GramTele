@@ -2,14 +2,14 @@
 $link = new PDO('mysql:host=localhost;dbname=gramtele','root','');
 
 if($_POST['input-message']){
-$sql = 'INSERT INTO messages (text, id_user) VALUES (?, ?)';
-$res = $link->prepare($sql);
-$res->execute([$_POST['input-message'], $_SESSION['id_user']] );
-header('location: /messages');
+    $sql = 'INSERT INTO messages (text, id_user) VALUES (?, ?)';
+    $res = $link->prepare($sql);
+    $res->execute([$_POST['input-message'], $_SESSION['id_user']] );
+    header('location: /messages');
 }
 else{
-$_SESSION['msg'] = 'Введите сообщение';
-$_SESSION['msg_status'] = 'danger';
+    $_SESSION['msg'] = 'Введите сообщение';
+    $_SESSION['msg_status'] = 'danger';
 }
 ?>
 <!doctype html>

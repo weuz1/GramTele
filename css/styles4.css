@@ -143,3 +143,36 @@ body {
     background: #363636;
     border-radius: 10px;
 }
+input {
+    background: #474747;
+    border: 1px solid;
+    border-color: #3d3d3d;
+    color: #e3e3e3;
+    height: 25px;
+    border-radius: 10px;
+}
+.send-form {
+    display: flex;
+}
+.add-user a{
+    text-decoration: none;
+    color: #e3e3e3;
+    text-align: center;
+}
+.need-abs {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+}
+.user-list a{
+    text-decoration: none;
+    color: #e3e3e3;
+    text-align: center;
+}
+.user-list {
+    padding-left: 400px;
+}
+.need-abs {
+    height: 50px;
+    align-items: center;
+}

@@ -7,6 +7,14 @@ $sql='SELECT login FROM users WHERE id=?';
 $res = $link->prepare($sql);
 $res->execute([$_SESSION['id_user']]);
 $row = $res->fetch(PDO::FETCH_ASSOC);
+
+if($_POST['input-message']){
+    $sql = 'INSERT INTO messages (text, id_user, id_chat) VALUES (?, ?, ?)';
+    $res = $link->prepare($sql);
+    $res->execute([$_POST['input-message'], $_SESSION['id_user'], $_GET['id_chat']]);
+    header('location: /messages?id_chat='.$_GET['id_chat']);
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -72,27 +80,44 @@ $row = $res->fetch(PDO::FETCH_ASSOC);
 //
                 }
                 else{
-                    $sql = "SELECT * FROM messages WHERE id_chat=?";
+                    $sql = "SELECT m.text text_message, u.login login FROM messages m
+                            JOIN users u ON u.id = m.id_user 
+                            WHERE id_chat=?";
                     $res = $link->prepare($sql);
                     $res->execute([$_GET['id_chat']]);
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <div class="message">
-                            <div class="message-avatar">ava</div>
+                            <div class="message-avatar"></div>
                             <div class="speech-bubble">
-                                <div class="message-header"><a href="#"></a></div>
-                                <div class="message-text"><?= htmlspecialchars($row['text'])?></div>
+                                <div class="message-header"><a href="#"><?= $row['login']?></a></div>
+                                <div class="message-text"><?= htmlspecialchars($row['text_message'])?></div>
                             </div>
                         </div>
                     <?
                     }
                     ?>
 
+
+
+            </div>
+                <div class="need-abs">
+                    <div class="send-form">
+                        <form method="POST">
+                            <input type="text" name="input-message" required placeholder="Введите сообщение" autocomplete="off" class="message-pls">
+                            <input type="submit" name="submit-btn" value="Отправить">
+                        </form>
+                    </div>
+                    <div class="user-list">
+                        <a href="user-list.php?id_chat=<?= $_GET['id_chat']?>">Список пользователей</a>
+                    </div>
+                    <div class="add-user">
+                        <a href="add-user.php?id_chat=<?= $_GET['id_chat']?>">Добавить пользователя</a>
+                    </div>
+                </div>
                 <?
                 }
                 ?>
-
-            </div>
         </div>
     </div>
     <script src="../js/scripts.js"></script>
