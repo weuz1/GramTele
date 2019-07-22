@@ -101,3 +101,16 @@ body {
     flex-wrap: wrap;
     word-wrap: break-word;
 }
+.add-news {
+    background: #3b3b3b;
+    height: 50px;
+}
+.add-news-btn a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.add-news{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
